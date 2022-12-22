@@ -5,9 +5,9 @@
         class="box-container__box-icon"
         :fill="true"
         :icon="item.icon"
-        :width="40"
-        :height="35"
-        :viewBox="'0 0 40 35'"
+        :width="60"
+        :height="55"
+        :viewBox="'0 0 60 55'"
         :color="'var(--blue)'"
       />
       <div class="box-container__right-box">
@@ -42,18 +42,18 @@ export default class TopSection extends Vue {
     },
     {
       name: "New Patients",
-      icon: this.topSectionIcons.medicineIcon,
-      number: 213,
+      icon: this.topSectionIcons.newPatientIcon,
+      number: 104,
     },
     {
       name: "Operations",
-      icon: this.topSectionIcons.medicineIcon,
-      number: 213,
+      icon: this.topSectionIcons.operationsIcon,
+      number: 24,
     },
     {
       name: "Hospital Earnings",
-      icon: this.topSectionIcons.medicineIcon,
-      number: 213,
+      icon: this.topSectionIcons.hospitalIcon,
+      number: "$ 12,174",
     },
   ];
 }

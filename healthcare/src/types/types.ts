@@ -6,7 +6,7 @@ export type SvgIcon = {
 export type TopSectionItem = {
     name: string,
     icon: SvgIcon,
-    number: number,
+    number: number | string,
 };
 
 export type Appointment = {
