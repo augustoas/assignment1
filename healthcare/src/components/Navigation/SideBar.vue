@@ -1,21 +1,17 @@
 <template>
   <v-navigation-drawer app permanent class="side-nav" width="256">
-    <div class="logo-nav">
+    <div class="side-nav__logo-nav">
       <img src="@/assets/logo-image.png" alt="Healthcare" />
     </div>
     <v-list flat>
-      <v-subheader class="subtitle1">MEDICINE</v-subheader>
+      <v-subheader class="side-nav__subtitle">MEDICINE</v-subheader>
       <v-list-item-group v-model="selectedItem" color="primary">
         <v-list-item v-for="(item, i) in items" :key="i">
           <v-list-item-icon>
-            <v-icon
-              :color="getIconColor(i)"
-              class="icon-nav"
-              v-text="item.icon"
-            ></v-icon>
+            <BaseIcon :fill="getFilled(i)" :icon="item.icon" />
           </v-list-item-icon>
-          <v-list-item-content class="subtitle2">
-            <span v-text="item.name"></span>
+          <v-list-item-content class="subtitle2 subtitle2--side-nav">
+            <span class="list-icon-text" v-text="item.name"></span>
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
@@ -25,66 +21,52 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { sideBarIcons } from "@/assets/icons/icons";
+import BaseIcon from "../Base/BaseIcon.vue";
 
-@Component
+@Component({
+  components: {
+    BaseIcon,
+  },
+})
 export default class SideBar extends Vue {
   public name = "SideBar";
   public selectedItem = 0;
+  public sideBarIcons = sideBarIcons;
 
   public items = [
     {
       name: "Dashboard",
-      icon: "mdi-view-dashboard-outline",
-      route: {
-        name: "daily-opt",
-      },
+      icon: this.sideBarIcons.dashboardIcon,
     },
     {
       name: "Appointments",
-      icon: "mdi-view-dashboard",
-      route: {
-        name: "weekly-opt",
-      },
+      icon: this.sideBarIcons.appointmentIcon,
     },
     {
       name: "Doctors",
-      icon: "mdi-view-dashboard-outline",
-      route: {
-        name: "monthly-opt",
-      },
+      icon: this.sideBarIcons.doctorIcon,
     },
     {
       name: "Departments",
-      icon: "mdi-view-dashboard-outline",
-      route: {
-        name: "monthly-opt",
-      },
+      icon: this.sideBarIcons.doctorIcon,
     },
     {
       name: "Patients",
-      icon: "mdi-view-dashboard-outline",
-      route: {
-        name: "monthly-opt",
-      },
+      icon: this.sideBarIcons.patientIcon,
     },
     {
       name: "Payments",
-      icon: "mdi-view-dashboard-outline",
-      route: {
-        name: "monthly-opt",
-      },
+      icon: this.sideBarIcons.paymentIcon,
     },
     {
       name: "Help",
-      icon: "mdi-view-dashboard-outline",
-      route: {
-        name: "monthly-opt",
-      },
+      icon: this.sideBarIcons.helpIcon,
     },
   ];
 
-  getIconColor(index) {
-    return index === this.selectedItem ? "primary" : "var(--navbar-icon-color)";
+  getFilled(index: number) {
+    return index === this.selectedItem ? true : false;
   }
 }
 </script>
@@ -94,19 +76,22 @@ export default class SideBar extends Vue {
   box-shadow: 4px 0px 16px 0px #101e7314;
 }
 
-.logo-nav {
-  margin: 24px 90px 30px 24px;
+.side-nav__logo-nav {
+  margin: 24px 90px 24px 24px;
 }
 
-.subtitle1 {
+.side-nav__subtitle {
   margin: 0px 90px 0px 24px;
   padding: 0px;
+  color: var(--grey) !important;
 }
 
+::v-deep .v-list {
+  padding: 0px !important;
+}
 ::v-deep .v-list-item {
   padding: 0px;
   align-self: center;
-  margin: 10px 0px 0px 0px;
 
   .v-list-item__icon:first-child {
     margin-right: 10px;
@@ -124,7 +109,7 @@ export default class SideBar extends Vue {
 
 ::v-deep .v-list-item:last-child {
   border-top: 1px solid #e8e8e8;
-  margin-top: 10px;
+  margin-top: 4px;
   padding-top: 10px;
 }
 </style>

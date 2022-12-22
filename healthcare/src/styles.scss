@@ -1,6 +1,9 @@
 :root {
   --background-color-main: #F6F8FB;
-  --navbar-icon-color: #DBDDE0;
+  --navbar-icon-grey: #DBDDE0;
+  --navbar-icon-blue: #336CFB;
+  --blue: #558EFF;
+  --grey: #a0a4a8;
 }
 
 body {
@@ -76,6 +79,10 @@ body {
   font-weight: bold;
   line-height: 20px;
   letter-spacing: 0.1px;
+}
+
+.subtitle2--side-nav {
+  color: #52575C !important;
 }
 
 .small1 {
